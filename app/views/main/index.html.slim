@@ -1,8 +1,11 @@
 // this is the header of the game
 h1 Welcome to the treasure hunt game
 
-// this sets up a div with the class clue and id clue 
-.clue#clue
-  // this line displays the content of the current clue
-  p= @current_clue
-  
+// this is the grid
+// this is a div element with the class game-grid
+.game-grid
+  // slim directive or method that iterates over each row in the game_state variable 
+  - @game_state.each do |row|
+      - row.each do |cell|
+        // another div element with class cell and then, data-type are data attributes that store more info about the cell 
+        .cell data-type="#{cell[:type]}" data-revealed="#{cell[:revealed]}"
