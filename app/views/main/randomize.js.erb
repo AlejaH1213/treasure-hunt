@@ -1,0 +1,15 @@
+
+console.log('randomize.js.erb is executed');
+console.log('jQuery version:', $.fn.jquery);
+
+
+<% @game_state.each_with_index do |row, row_index| %>
+ 
+  var rowElement = $('.game-grid .row').eq(<%= row_index %>);
+
+
+  <% row.each_with_index do |cell, cell_index| %>
+    var cellElement = rowElement.find('.cell').eq(<%= cell_index %>);
+    cellElement.find('.cell-number').text(<%= cell[:number] %>);
+  <% end %>
+<% end %>
