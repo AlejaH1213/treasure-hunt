@@ -1,0 +1,19 @@
+
+// = require jquery
+// = require jquery_ujs
+console.log('Hello from application.js.erb!')
+$(document).ready(function(){
+  $('#randomize-button').on('click', function(){
+    $.ajax({
+      url: '/main/randomize',
+      method: 'GET',
+      dataType: 'script',
+      success: function(response) {
+        console.log('Numbers randomized', response);
+      },
+      error: function(error) {
+        console.error('Error randomizing numbers', error);
+      }
+    })
+  })
+});
