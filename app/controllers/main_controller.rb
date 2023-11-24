@@ -23,20 +23,22 @@ class MainController < ApplicationController
     @game_state ||= initialize_grid(5)
   end
 
-
+  #this method calculates the size of the game and then initializes the game with random numbers 
   def generate_random_game_state
     size = @game_state.length
   initialize_grid(size)
   end
-  # this method is responsible for generating  the intial grid for the game, first creates an array of numbers from 1 to (size*size), then shuffles the array and slices it into subarrays, each representing a row in the grid, then maps each number to a hash 
 
 
-
+  # this method is an action triggered by the user
   def randomize
-  initialize_game
-  @game_state = generate_random_game_state
-    respond_to do |format|
-      format.js
-    end
+    # it initializes the game, creating a grid with initial values
+    initialize_game
+    # then generates a random game
+    @game_state = generate_random_game_state
+      # indicates that the response format should be determined based on the type of request, in this case it will be javascript  
+      respond_to do |format|
+        format.js
+      end
   end
 end
